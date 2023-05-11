@@ -12,9 +12,9 @@ public class Biblioteca {
 	private List<Livro> livros = new ArrayList<>();
 	private List<Funcionario> funcionarios = new ArrayList<>();
 
-	public void addLivros(Livro[] livro) {
-		for (Livro alivro : livro) {
-			livros.add(alivro);
+	public void addLivros(Livro[] livros) {
+		for (Livro livro : livros) {
+			livros.add(livro);
 		}
 	}
 
@@ -28,9 +28,9 @@ public class Biblioteca {
 		}
 	}
 
-	public void addFuncionario(Funcionario[] funcionario) {
-		for (Funcionario afuncionario : funcionario) {
-			funcionarios.add(afuncionario);
+	public void addFuncionario(Funcionario[] funcionarios) {
+		for (Funcionario funcionario : funcionarios) {
+			funcionarios.add(funcionario);
 		}
 	}
 

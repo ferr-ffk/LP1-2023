@@ -6,10 +6,7 @@ import usuarios.Livro;
 
 public class Main {
 	public static void main(String[] args) {
-		Biblioteca biblioteca = new Biblioteca();
-		biblioteca.setNome("Livraria Lira");
-
-		Dono dono = new Dono("Fernando Freitas", 34425780990L, 9845434783L);
+		Biblioteca biblioteca = new Biblioteca("Livraria Lira", new Dono("Fernando Freitas", 34425780990L, 9845434783L));
 
 		Funcionario f1 = new Funcionario("Danilo Teixeira", 147194593915L, 295810583L, "Bibliotecario chefe");
 
@@ -22,7 +19,7 @@ public class Main {
 		Livro l3 = new Livro("A revolução dos bichos", "George Orwell", 1928);
 
 		System.out.printf("Biblioteca '%s'\n", biblioteca.getNome());
-		System.out.printf("Dono atual: '%s'\n\n", dono.getNome());
+		System.out.printf("Dono atual: '%s'\n\n", biblioteca.getDono());
 
 		biblioteca.addFuncionario(f1);
 		biblioteca.addFuncionario(f2);

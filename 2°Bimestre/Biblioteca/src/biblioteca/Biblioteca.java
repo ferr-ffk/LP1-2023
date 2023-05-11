@@ -30,7 +30,7 @@ public class Biblioteca {
 	public void addFuncionario(Funcionario funcionario) {
 		funcionarios.add(funcionario);
 	}
-	String
+	
 	public void mostraFuncionario() {
 		System.out.println("===Funcionarios===");
 		for (Funcionario funcionario : funcionarios) {

@@ -10,7 +10,7 @@ public abstract class Item implements Comercializar{
 	
 	@Override
 	public String toString() {
-		return String.format("[id: %12d, nome: %s, preco: %,f]", id, nome, preco);
+		return String.format("[id: %d, nome: %s, preco: %,f]", id, nome, preco);
 	}
 
 	public Item(String nome, Double preco) {

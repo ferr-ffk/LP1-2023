@@ -27,11 +27,12 @@ public class Produto extends Item {
 	public void comercializar() {
 		try {
 			if(estoque <= 0) {
-				throw new ComercializarException("O estoque deste produto já está vazio");
+				throw new ComercializarException(String.format("O estoque do produto %s já está vazio!", this.nome));
 			} else {
 				estoque--;
 			}
 		} catch (ComercializarException e) {
+			System.err.println(e.getMessage());
 			estoque = 0;
 		}
 	}

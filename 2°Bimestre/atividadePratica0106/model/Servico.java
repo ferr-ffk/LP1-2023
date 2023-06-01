@@ -18,10 +18,10 @@ public class Servico extends Item{
 			if(!this.disponivel) {
 				this.disponivel = true;
 			} else {
-				throw new ComercializarException("O produto já está disponível!");
+				throw new ComercializarException(String.format("O produto %s já está disponível!", this.nome));
 			}
 		} catch (ComercializarException e){
-			System.out.println(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 	}
 
@@ -41,10 +41,10 @@ public class Servico extends Item{
 			if(this.disponivel) {
 				this.disponivel = false;
 			} else {
-				throw new ComercializarException("O produto já não está disponível!");
+				throw new ComercializarException(String.format("O produto %s já não está disponível!", this.nome));
 			}
 		} catch (ComercializarException e){
-			System.out.println(e.getMessage());
+			System.err.println(e.getMessage());
 		}
 	}
 }

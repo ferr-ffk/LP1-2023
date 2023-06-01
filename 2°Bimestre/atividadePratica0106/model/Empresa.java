@@ -36,7 +36,16 @@ public class Empresa {
 		System.out.println("Id não encontrado");
 	}
 
-	public Empresa(Item... ittens) {
-		this.itens.addAll(itens);
+	public Empresa() {
+		
+	}
+	
+	@Override
+	public String toString() {
+		String empresa = "[";
+		for(Item item : itens) {
+			empresa += item + "\n";
+		}
+		return empresa + "]";
 	}
 }

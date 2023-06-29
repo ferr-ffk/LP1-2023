@@ -25,7 +25,7 @@ public class Main {
 		
 		orc.exibir(true);
 		orc.removerItem(1L);
-		System.out.println("\nitem2: " +item2.getId());
+		System.out.println("\nitem2: " + item2.getId());
 		orc.exibir(true);
 		orc.removerItem(19l);
 		orc.exibir(true);

@@ -1,13 +1,16 @@
 package entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Entity
+@Entity(name ="pessoas")
 @Table
 public class Pessoa {
 
@@ -24,14 +27,27 @@ public class Pessoa {
 
 	@Column
 	private String email;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_endereco")
+	private Endereco endereco;
 
 	public Pessoa() {
 	}
 
-	public Pessoa(String primeiroNome, String segundoNome, String email) {
+	public Pessoa(String primeiroNome, String segundoNome, String email, Endereco endereco) {
 		this.primeiroNome = primeiroNome;
 		this.segundoNome = segundoNome;
 		this.email = email;
+		this.endereco = endereco;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 
 	public long getId() {
@@ -68,8 +84,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [id: " + id + ", primeiroNome: " + primeiroNome + ", segundoNome: " + segundoNome + ", email: "
-				+ email + "]";
+		return "Pessoa [" + id + "] " + primeiroNome + " " + segundoNome + ", email: "
+				+ email + "\nResidência: " + endereco;
 	}
 
 }

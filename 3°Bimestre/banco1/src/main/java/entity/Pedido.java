@@ -31,6 +31,9 @@ public class Pedido {
 	@JoinTable(name = "pedido_produto", joinColumns = @JoinColumn(name = "id_pedido"), inverseJoinColumns = @JoinColumn(name = "id_produto"))
 	private List<Produto> produtos;
 	
+	@Column
+	private Double valorTotal = 0.0;
+	
 	public Pedido() {}
 	
 	public Pedido(Pessoa pessoa) {
@@ -40,6 +43,15 @@ public class Pedido {
 	public Pedido(Pessoa pessoa, List<Produto> produtos) {
 		this.pessoa = pessoa;
 		this.produtos = produtos;
+
+		for(Produto p : produtos) {
+			valorTotal += p.getPreco();
+		}
+	}
+	
+	public void adicionarProduto(Produto p) {
+		produtos.add(p);
+		valorTotal += p.getPreco();
 	}
 
 	public long getId() {
@@ -60,7 +72,7 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedido [" + id + "] Realizado por " + pessoa + ", Produtos: " + produtos;
+		return "Pedido [" + id + "]: R$" + valorTotal + " Realizado por " + pessoa + ", Produtos: " + produtos;
 	}
 	
 	

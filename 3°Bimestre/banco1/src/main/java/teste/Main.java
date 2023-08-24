@@ -1,19 +1,52 @@
 package teste;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import entity.Endereco;
+import entity.Pedido;
 import entity.Pessoa;
+import entity.Produto;
 import util.HibernateUtil;
 
 public class Main {
 
 	public static void main(String[] args) {
-		
 		 
+		 gerenciarPessoas();
+		 
+		 gerenciarPedidos();
+	}
+
+	private static void gerenciarPedidos() {
+		
+		 Pessoa p1 = new Pessoa("Luis", "Felipe", "luis.felipe@gmail.com", new Endereco("Meu coração", "SP"));
+		 
+		 Produto pro1 = new Produto("Tinta", 23.90);
+		 Produto pro2 = new Produto("Abacaxi", 8.90);
+		 
+		 Pedido pe1 = new Pedido(p1, Arrays.asList(pro1, pro2));
+		 
+		 Session session = HibernateUtil.getSessionFactory().openSession();
+		 
+		 Transaction transaction = session.beginTransaction();
+		 
+		 session.persist(pe1);
+		 
+		 transaction.commit();
+		 
+		 List<Pedido> pedidos = session.createQuery("from pedido", Pedido.class).list();
+		 
+		 System.out.println("\n");
+		 
+		 pedidos.forEach(p -> System.out.println(p));
+		 
+	}
+
+	private static void gerenciarPessoas() {
 		 Pessoa p1 = new Pessoa("davi", "gomes", "davi@gmail.com", new Endereco("Avenida das Gracas", "SBC"));
 		 Pessoa p2 = new Pessoa("nando", "freitas", "nando@gmail.com", new Endereco("Rua dos Jequitibás", "SP"));
 		 Pessoa p3 = new Pessoa("yuta", "the man", "yuta@gmail.com", new Endereco("Rua tal", "GO"));

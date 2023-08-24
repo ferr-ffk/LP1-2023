@@ -18,7 +18,7 @@ public class Endereco {
 	
 	@Column
 	private String rua;
-	
+	 
 	@Column
 	private String cidade;
 	

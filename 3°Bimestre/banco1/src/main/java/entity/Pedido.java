@@ -9,8 +9,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity(name = "pedido")
@@ -25,10 +26,16 @@ public class Pedido {
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_pessoa")
 	private Pessoa pessoa;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_produtos")
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "pedido_produto", joinColumns = @JoinColumn(name = "id_pedido"), inverseJoinColumns = @JoinColumn(name = "id_produto"))
 	private List<Produto> produtos;
+	
+	public Pedido() {}
+	
+	public Pedido(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
 
 	public Pedido(Pessoa pessoa, List<Produto> produtos) {
 		this.pessoa = pessoa;
@@ -51,17 +58,9 @@ public class Pedido {
 		this.pessoa = pessoa;
 	}
 
-	public List<Produto> getProdutos() {
-		return produtos;
-	}
-
-	public void setProdutos(List<Produto> produtos) {
-		this.produtos = produtos;
-	}
-
 	@Override
 	public String toString() {
-		return "Pedido [" + id + "] Realizado por " + pessoa + ", produtos=" + produtos;
+		return "Pedido [" + id + "] Realizado por " + pessoa + ", Produtos: " + produtos;
 	}
 	
 	

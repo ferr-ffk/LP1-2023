@@ -1,7 +1,5 @@
 package entity;
 
-import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,11 +7,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
-@Entity(name ="pessoas")
+@Entity(name = "pessoas")
 @Table
 public class Pessoa {
 
@@ -30,14 +27,10 @@ public class Pessoa {
 
 	@Column
 	private String email;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_endereco")
 	private Endereco endereco;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")
-	@JoinColumn
-	private List<Pedido> pedidos;
 
 	public Pessoa() {
 	}
@@ -91,8 +84,8 @@ public class Pessoa {
 
 	@Override
 	public String toString() {
-		return "Pessoa [" + id + "] " + primeiroNome + " " + segundoNome + ", email: "
-				+ email + "\nResidência: " + endereco;
+		return "Pessoa [" + id + "] " + primeiroNome + " " + segundoNome + ", email: " + email + "\nResidência: "
+				+ endereco;
 	}
 
 }

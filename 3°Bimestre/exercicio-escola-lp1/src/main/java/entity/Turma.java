@@ -41,6 +41,8 @@ public class Turma {
 
 	@Column
 	private String codigo;
+	
+	public Turma() {}
 
 	public Turma(Professor professor, Integer horario, List<Aluno> alunos, String codigo) {
 		this.professor = professor;

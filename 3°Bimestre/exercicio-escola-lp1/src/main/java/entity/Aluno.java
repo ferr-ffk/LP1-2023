@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -38,12 +39,12 @@ public class Aluno {
 
 	@Override
 	public String toString() {
-		return "[" + prontuario + "]: " + nome + " senha = " + senha + ", notas: " + notas + ", media: " + getMedia();
+		return "[" + prontuario + "]: " + nome + " senha = " + senha + ", notas: " + notas + ", media: " + media;
 	}
 
-	public Aluno(String senha, List<Nota> notas, String nome, String prontuario) {
+	public Aluno(String senha, String nome, String prontuario) {
 		this.senha = senha;
-		this.notas = notas;
+		this.notas = new ArrayList<>();
 		this.nome = nome;
 		this.prontuario = prontuario;
 		this.media = getMedia();
@@ -66,6 +67,14 @@ public class Aluno {
 	}
 
 	public void adicionarNota(Nota nota) {
+		if(nota.getNota() < 0 || nota.getNota() > 10) {
+			throw new RuntimeException("A nota é inválida!");
+		}
+		
+		if(notas.size() == 0) {
+			media = nota.getNota();
+		}
+		
 		notas.add(nota);
 		getMedia();
 	}
@@ -87,6 +96,8 @@ public class Aluno {
 	}
 
 	public Double getMedia() {
+		media = 0.0;
+		
 		notas.forEach(nota -> {
 			media += nota.getNota();
 		});

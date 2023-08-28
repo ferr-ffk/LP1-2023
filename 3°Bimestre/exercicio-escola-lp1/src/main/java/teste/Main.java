@@ -1,4 +1,4 @@
-package teste;
+ package teste;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,27 +19,24 @@ public class Main {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = session.beginTransaction();
 		
-		Professor p1 = new Professor("abcdef", "655.356.987.00", "Igor Sampaio", "3045565");
+		Professor p1 = new Professor("abcdef", "655.356.987.00", "Igojogs", "3045565");
 		
 		List<Aluno> alunos = new ArrayList<>();
 		
-		List<Nota> notasA1 = new ArrayList<>();
-		notasA1.add(new Nota(7.6));
-		notasA1.add(new Nota(6.5));
-		notasA1.add(new Nota(3.6));
-		Aluno a1 = new Aluno("fedcba", notasA1, "Davi Gomes", "SP305758X");
+		Aluno a1 = new Aluno("fedcba", "Davi Gomes", "SP305758X");
+		a1.adicionarNota(new Nota(7.6));
+		a1.adicionarNota(new Nota(6.5));
+		a1.adicionarNota(new Nota(3.6));
 		
-		List<Nota> notasA2 = new ArrayList<>();
-		notasA2.add(new Nota(8.6));
-		notasA2.add(new Nota(9.3));
-		notasA2.add(new Nota(0.0));
-		Aluno a2 = new Aluno("xyzabc", notasA2, "Giovanny Foliene", "SP355538X");
+		Aluno a2 = new Aluno("xyzabc", "Giovanny Foliene", "SP355538X");
+		a2.adicionarNota(new Nota(8.6));
+		a2.adicionarNota(new Nota(9.3));
+		a2.adicionarNota(new Nota(0.0));
 		
-		List<Nota> notasA3 = new ArrayList<>();
-		notasA3.add(new Nota(3.5));
-		notasA3.add(new Nota(6.0));
-		notasA3.add(new Nota(4.5));
-		Aluno a3 = new Aluno("aorbwjg", notasA3, "Lucas Milhomem", "SP3088715");
+		Aluno a3 = new Aluno("aorbwjg", "Lucas Milhomem", "SP3088715");
+		a3.adicionarNota(new Nota(3.5));
+		a3.adicionarNota(new Nota(6.0));
+		a3.adicionarNota(new Nota(4.5));
 		
 		alunos.add(a1);
 		alunos.add(a2);
@@ -49,7 +46,7 @@ public class Main {
 		session.persist(a2);
 		session.persist(a3);
 		
-		Turma t1 = new Turma(p1, 07, alunos, "SP079");
+		Turma t1 = new Turma(p1, 07, alunos, "SP079 LP1-2");
 		session.persist(t1);
 		
 		transaction.commit();

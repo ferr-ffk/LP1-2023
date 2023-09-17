@@ -147,33 +147,4 @@ public class AgendaController {
 	public static List<Tarefa> getTarefas() {
 		return listaTarefas;
 	}
-
-	@FXML
-
-	public void adicionarExemplos() {
-		Tarefa tarefa1 = new Tarefa("Estudar para a prova", "16/09/2023", "20:00");
-		Tarefa tarefa2 = new Tarefa("Fazer lição", "17/09/2023", "02:00");
-		Tarefa tarefa3 = new Tarefa("X", "16/09/2023", "21:00");
-		Tarefa tarefa4 = new Tarefa("Y", "17/09/2023", "00:00");
-		tarefas.getChildren().addAll(tarefa1, tarefa2, tarefa3, tarefa4);
-
-		listaTarefas.add(tarefa1);
-		listaTarefas.add(tarefa2);
-		listaTarefas.add(tarefa3);
-		listaTarefas.add(tarefa4);
-
-		Evento evento1 = new Evento("Aniversário Bel", "23/09/2023", "10:00", "16:00");
-		Evento evento2 = new Evento("Dar o cu", "17/09/2023", "10:30", "17:00");
-
-		eventos.getChildren().addAll(evento1, evento2);
-		listaEventos.add(evento1);
-		listaEventos.add(evento2);
-
-		Lembrete lembrete1 = new Lembrete("Dormir cedo", "16/09/2023", "21:00");
-		Lembrete lembrete2 = new Lembrete("Dormir tarde", "17/09/2023", "00:00");
-
-		lembretes.getChildren().addAll(lembrete1, lembrete2);
-		listaLembretes.add(lembrete1);
-		listaLembretes.add(lembrete2);
-	}
 }

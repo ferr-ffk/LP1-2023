@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+
+<FlowPane fx:id="principal" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="controller.AgendaController" orientation="VERTICAL"
+	alignment="CENTER">
+
+	<padding>
+		<Insets left="15" right="15" top="15" bottom="15" />
+	</padding>
+
+	<FlowPane fx:id="entrada" alignment="CENTER"
+		orientation="VERTICAL" prefHeight="140" minHeight="80" minWidth="350">
+
+		<Button text="Agendar Evento" onAction="#criarNovoEvento">
+			<padding>
+				<Insets left="5" right="5" top="5" bottom="5" />
+			</padding>
+		</Button>
+
+		<Button text="Agendar Lembrete" onAction="#criarNovoLembrete">
+			<padding>
+				<Insets left="5" right="5" top="5" bottom="5" />
+			</padding>
+		</Button>
+
+		<Button text="Agendar Tarefa" onAction="#criarNovaTarefa">
+			<padding>
+				<Insets left="5" right="5" top="5" bottom="5" />
+			</padding>
+		</Button>
+
+		<Button text="Remover..." onAction="#removerAcontecimento">
+			<padding>
+				<Insets left="5" right="5" top="5" bottom="5" />
+			</padding>
+		</Button>
+
+	</FlowPane>
+
+	<Label text="Eventos:"></Label>
+	<FlowPane fx:id="eventos" alignment="CENTER"
+		orientation="VERTICAL" prefHeight="100" minHeight="70" prefWidth="350">
+	</FlowPane>
+
+	<Label text="Lembretes:"></Label>
+	<FlowPane fx:id="lembretes" alignment="CENTER"
+		orientation="VERTICAL" prefHeight="100" minHeight="70" prefWidth="350">
+	</FlowPane>
+
+	<Label text="Tarefas:"></Label>
+	<FlowPane fx:id="tarefas" prefHeight="100" minHeight="70"
+		orientation="VERTICAL" alignment="CENTER" prefWidth="350">
+	</FlowPane>
+
+</FlowPane>
